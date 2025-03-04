@@ -1,6 +1,6 @@
 # POGS
 
-This is the repository that contains source code for the [POGS website](https://nerfies.github.io).
+This is the repository that contains source code for the [POGS website](https://berkeleyautomation.github.io/POGS).
 
 If you find POGS useful for your work please cite:
 ```
