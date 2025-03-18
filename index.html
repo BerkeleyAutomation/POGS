@@ -288,13 +288,28 @@
                 padding: 20px;
             }
     
+            /* Container for vertical content */
+            .content-container {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+                gap: 20px;
+            }
+    
+            /* Row for horizontal content */
             .base-row {
                 display: flex;
                 flex-direction: row;
                 width: 100%;
                 justify-content: center;
                 align-items: center;
-                margin-bottom: 20px;
+            }
+    
+            /* Heading style */
+            .results-text {
+                text-align: center;
+                margin-bottom: 15px;
             }
     
             /* Iframe container */
@@ -319,126 +334,27 @@
                 display: block;
             }
     
-            /* Toggle switch */
-            .video-bar {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                width: 960px;
+            /* Fullscreen button container */
+            .fullscreen-container {
+                text-align: right;
                 margin: 10px auto;
-                padding: 5px;
-                background-color: #f5f5f5;
-                border-radius: 5px;
+                width: 960px;
             }
     
-            .viewer-bar {
-                padding: 0 10px;
-            }
-    
-            .switch {
-                position: relative;
-                display: inline-block;
-                width: 80px;
-                height: 30px;
-            }
-    
-            .switch input {
-                opacity: 0;
-                width: 0;
-                height: 0;
-            }
-    
-            .slider {
-                position: absolute;
-                cursor: pointer;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background-color: #ccc;
-                transition: .4s;
-                border-radius: 30px;
-            }
-    
-            .slider:before {
-                position: absolute;
-                content: "";
-                height: 22px;
-                width: 22px;
-                left: 4px;
-                bottom: 4px;
-                background-color: white;
-                transition: .4s;
-                border-radius: 50%;
-            }
-    
-            input:checked + .slider {
-                background-color: #2196F3;
-            }
-    
-            input:checked + .slider:before {
-                transform: translateX(50px);
-            }
-    
-            .labels {
-                position: absolute;
-                top: 8px;
-                left: 0;
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
-                padding: 0 8px;
-                box-sizing: border-box;
-                color: white;
-                font-size: 12px;
-                font-weight: bold;
-            }
-    
-            /* Dropdown */
-            .custom-dropdown {
-                position: relative;
-                display: inline-block;
-            }
-    
-            .dropdown-btn {
-                background-color: white;
+            .fullscreen-btn {
+                background: none;
                 border: 1px solid #ccc;
-                padding: 8px 16px;
                 cursor: pointer;
-                min-width: 200px;
-                text-align: left;
+                padding: 5px 10px;
                 border-radius: 4px;
-            }
-    
-            .arrow {
-                float: right;
-            }
-    
-            .dropdown-menu {
-                display: none;
-                position: absolute;
-                background-color: white;
-                min-width: 200px;
-                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                z-index: 1;
-                list-style-type: none;
-                padding: 0;
-                margin: 0;
-                max-height: 300px;
-                overflow-y: auto;
-                border-radius: 4px;
-            }
-    
-            .dropdown-menu li {
-                padding: 8px 16px;
-                cursor: pointer;
-            }
-    
-            .dropdown-menu li:hover {
-                background-color: #f1f1f1;
             }
     
             /* Thumbnails */
+            .thumbnail-navigation {
+                display: inline-block;
+                margin-top: 15px;
+            }
+    
             .thumbnail-row {
                 display: flex;
                 overflow-x: auto;
@@ -481,135 +397,140 @@
                 cursor: pointer;
                 padding: 0 10px;
             }
-    
-            /* Fullscreen button */
-            .video-export {
-                text-align: right;
-            }
-    
-            .video-btn {
-                background: none;
-                border: none;
-                cursor: pointer;
-                padding: 5px;
-            }
         </style>
-        <div class="base-row add-top-padding">
+        
+        <div class="content-container">
+          <!-- Heading -->
           <h3 class="results-text">
               <b>Click the thumbnails below to navigate between different scenes</b>
           </h3>
-      </div>
   
-      <!-- Iframe Container - This will hold all your iframes -->
-      <div id="iframe-container" class="iframe-container">
-          <iframe id="drill_scene1" class="iframe show" src="https://berkeleyautomation.github.io/POGS/viser-client/?playbackPath=https://berkeleyautomation.github.io/POGS/recordings/drill_scene1.viser&initialCameraPosition=-0.116,-1.146,0.173&initialCameraLookAt=0.063,-0.539,-0.157&initialCameraUp=0.000,0.000,1.000"></iframe>
-          <iframe id="drill_scene2" class="iframe" src="https://berkeleyautomation.github.io/POGS/viser-client/?playbackPath=https://berkeleyautomation.github.io/POGS/recordings/drill_scene2.viser&initialCameraPosition=-0.116,-1.146,0.173&initialCameraLookAt=0.063,-0.539,-0.157&initialCameraUp=0.000,0.000,1.000"></iframe>
-          <iframe id="drill_scene3" class="iframe" src="https://berkeleyautomation.github.io/POGS/viser-client/?playbackPath=https://berkeleyautomation.github.io/POGS/recordings/drill_scene3.viser&initialCameraPosition=-0.116,-1.146,0.173&initialCameraLookAt=0.063,-0.539,-0.157&initialCameraUp=0.000,0.000,1.000"></iframe>
+          <!-- Iframe Container - This will hold all your iframes -->
+          <div id="iframe-container" class="iframe-container">
+              <iframe id="drill_scene1" class="iframe show" src="https://berkeleyautomation.github.io/POGS/viser-client/?playbackPath=https://berkeleyautomation.github.io/POGS/recordings/drill_scene1.viser&initialCameraPosition=-0.116,-1.146,0.173&initialCameraLookAt=0.063,-0.539,-0.157&initialCameraUp=0.000,0.000,1.000"></iframe>
+              <iframe id="drill_scene2" class="iframe" src="https://berkeleyautomation.github.io/POGS/viser-client/?playbackPath=https://berkeleyautomation.github.io/POGS/recordings/drill_scene2.viser&initialCameraPosition=-0.116,-1.146,0.173&initialCameraLookAt=0.063,-0.539,-0.157&initialCameraUp=0.000,0.000,1.000"></iframe>
+              <iframe id="drill_scene3" class="iframe" src="https://berkeleyautomation.github.io/POGS/viser-client/?playbackPath=https://berkeleyautomation.github.io/POGS/recordings/drill_scene3.viser&initialCameraPosition=-0.116,-1.146,0.173&initialCameraLookAt=0.063,-0.539,-0.157&initialCameraUp=0.000,0.000,1.000"></iframe>
+              <iframe id="drill_scene4" class="iframe" src="https://berkeleyautomation.github.io/POGS/viser-client/?playbackPath=https://berkeleyautomation.github.io/POGS/recordings/drill_scene4.viser&initialCameraPosition=-0.116,-1.146,0.173&initialCameraLookAt=0.063,-0.539,-0.157&initialCameraUp=0.000,0.000,1.000"></iframe>
 
-          <iframe id="category2-item1" class="iframe" src="path/to/category2/first/iframe.html"></iframe>
-          <iframe id="category2-item2" class="iframe" src="path/to/category2/second/iframe.html"></iframe>
-          
-          <!-- Add more categories and items as needed -->
-      </div>
-  
-      <!-- Fullscreen button -->
-      <div class="fullscreen-container">
-          <button class="fullscreen-btn" onclick="toggleFullscreen()">
-              Toggle Fullscreen
-          </button>
-      </div>
-  
-      <!-- Thumbnail Navigation -->
-      <div class="base-row" style="display: inline-block">
-          <button class="slide-arrow" id="slide-arrow-prev" onclick="slideLeft()">‹</button>
-          <div class="base-row thumbnail-row" id="thumbnails-scroll">
-              <div class="base-col thumbnail-col">
-                  <button class="thumbnail-btn active-btn" id="thumb-0" onclick="showIframe('drill_scene1')">
-                      <img src="path/to/thumbnail1.jpg" alt="Item 1" class="thumbnails">
-                      Drill 1
-                  </button>
-              </div>
-              <div class="base-col thumbnail-col">
-                  <button class="thumbnail-btn" id="thumb-1" onclick="showIframe('drill_scene1')">
-                      <img src="path/to/thumbnail2.jpg" alt="Item 2" class="thumbnails">
-                      Drill 2
-                  </button>
-              </div>
-              <div class="base-col thumbnail-col">
-                  <button class="thumbnail-btn" id="thumb-2" onclick="showIframe('drill_scene3')">
-                      <img src="path/to/thumbnail3.jpg" alt="Item 3" class="thumbnails">
-                      Drill 3
-                  </button>
-              </div>
-              <div class="base-col thumbnail-col">
-                  <button class="thumbnail-btn" id="thumb-3" onclick="showIframe('category2-item2')">
-                      <img src="path/to/thumbnail4.jpg" alt="Item 4" class="thumbnails">
-                      Item 4
-                  </button>
-              </div>
-              <!-- Add more thumbnails as needed -->
+              <iframe id="iron_shelf_pick1" class="iframe" src="https://berkeleyautomation.github.io/POGS/viser-client/?playbackPath=https://berkeleyautomation.github.io/POGS/recordings/iron_shelf_pick1.viser&initialCameraPosition=-0.116,-1.146,0.173&initialCameraLookAt=0.063,-0.539,-0.157&initialCameraUp=0.000,0.000,1.000"></iframe>
+              <iframe id="iron_shelf_place1" class="iframe" src="https://berkeleyautomation.github.io/POGS/viser-client/?playbackPath=https://berkeleyautomation.github.io/POGS/recordings/iron_shelf_place1.viser&initialCameraPosition=-0.116,-1.146,0.173&initialCameraLookAt=0.063,-0.539,-0.157&initialCameraUp=0.000,0.000,1.000"></iframe>
+              
+              <iframe id="iron_shelf_pick2" class="iframe" src="https://berkeleyautomation.github.io/POGS/viser-client/?playbackPath=https://berkeleyautomation.github.io/POGS/recordings/iron_shelf_pick2.viser&initialCameraPosition=-0.116,-1.146,0.173&initialCameraLookAt=0.063,-0.539,-0.157&initialCameraUp=0.000,0.000,1.000"></iframe>
+              <iframe id="iron_shelf_place2" class="iframe" src="https://berkeleyautomation.github.io/POGS/viser-client/?playbackPath=https://berkeleyautomation.github.io/POGS/recordings/iron_shelf_place2.viser&initialCameraPosition=-0.116,-1.146,0.173&initialCameraLookAt=0.063,-0.539,-0.157&initialCameraUp=0.000,0.000,1.000"></iframe>
+              
+              <iframe id="shoe_shoebox_pick1" class="iframe" src="https://berkeleyautomation.github.io/POGS/viser-client/?playbackPath=https://berkeleyautomation.github.io/POGS/recordings/shoe_shoebox_pick1.viser&initialCameraPosition=-0.116,-1.146,0.173&initialCameraLookAt=0.063,-0.539,-0.157&initialCameraUp=0.000,0.000,1.000"></iframe>
+              <iframe id="shoe_shoebox_place1" class="iframe" src="https://berkeleyautomation.github.io/POGS/viser-client/?playbackPath=https://berkeleyautomation.github.io/POGS/recordings/shoe_shoebox_place1.viser&initialCameraPosition=-0.116,-1.146,0.173&initialCameraLookAt=0.063,-0.539,-0.157&initialCameraUp=0.000,0.000,1.000"></iframe>
+              
+              <iframe id="shoe_shoebox_pick2" class="iframe" src="https://berkeleyautomation.github.io/POGS/viser-client/?playbackPath=https://berkeleyautomation.github.io/POGS/recordings/shoe_shoebox_pick2.viser&initialCameraPosition=-0.116,-1.146,0.173&initialCameraLookAt=0.063,-0.539,-0.157&initialCameraUp=0.000,0.000,1.000"></iframe>
+              <iframe id="shoe_shoebox_place2" class="iframe" src="https://berkeleyautomation.github.io/POGS/viser-client/?playbackPath=https://berkeleyautomation.github.io/POGS/recordings/shoe_shoebox_place2.viser&initialCameraPosition=-0.116,-1.146,0.173&initialCameraLookAt=0.063,-0.539,-0.157&initialCameraUp=0.000,0.000,1.000"></iframe>
+              
+              <iframe id="jigsaw_shelf_pick1" class="iframe" src="https://berkeleyautomation.github.io/POGS/viser-client/?playbackPath=https://berkeleyautomation.github.io/POGS/recordings/jigsaw_shelf_pick1.viser&initialCameraPosition=-0.116,-1.146,0.173&initialCameraLookAt=0.063,-0.539,-0.157&initialCameraUp=0.000,0.000,1.000"></iframe>
+              <iframe id="jigsaw_shelf_place1" class="iframe" src="https://berkeleyautomation.github.io/POGS/viser-client/?playbackPath=https://berkeleyautomation.github.io/POGS/recordings/jigsaw_shelf_place1.viser&initialCameraPosition=-0.116,-1.146,0.173&initialCameraLookAt=0.063,-0.539,-0.157&initialCameraUp=0.000,0.000,1.000"></iframe>
+              
+              <iframe id="jigsaw_shelf_pick2" class="iframe" src="https://berkeleyautomation.github.io/POGS/viser-client/?playbackPath=https://berkeleyautomation.github.io/POGS/recordings/jigsaw_shelf_pick2.viser&initialCameraPosition=-0.116,-1.146,0.173&initialCameraLookAt=0.063,-0.539,-0.157&initialCameraUp=0.000,0.000,1.000"></iframe>
+              <iframe id="jigsaw_shelf_place2" class="iframe" src="https://berkeleyautomation.github.io/POGS/viser-client/?playbackPath=https://berkeleyautomation.github.io/POGS/recordings/jigsaw_shelf_place2.viser&initialCameraPosition=-0.116,-1.146,0.173&initialCameraLookAt=0.063,-0.539,-0.157&initialCameraUp=0.000,0.000,1.000"></iframe>
+              
+              <!-- Add more categories and items as needed -->
           </div>
-          <button class="slide-arrow" id="slide-arrow-next" onclick="slideRight()">›</button>
-      </div>
-  
-      <script>
-          // Show specific iframe and update active thumbnail
-          function showIframe(iframeId) {
-              // Hide all iframes
-              document.querySelectorAll('.iframe').forEach(iframe => {
-                  iframe.classList.remove('show');
-              });
-              
-              // Show the selected iframe
-              const iframe = document.getElementById(iframeId);
-              if (iframe) {
-                  iframe.classList.add('show');
-              }
-              
-              // Update active thumbnail
-              const thumbnails = document.querySelectorAll('.thumbnail-btn');
-              thumbnails.forEach(thumb => {
-                  thumb.classList.remove('active-btn');
-              });
-              
-              // Find the thumbnail button associated with this iframe
-              for (let i = 0; i < thumbnails.length; i++) {
-                  if (thumbnails[i].onclick.toString().includes(iframeId)) {
-                      thumbnails[i].classList.add('active-btn');
-                      break;
+      
+          <!-- Fullscreen button -->
+          <div class="fullscreen-container">
+              <button class="fullscreen-btn" onclick="toggleFullscreen()">
+                  Toggle Fullscreen
+              </button>
+          </div>
+      
+          <!-- Thumbnail Navigation -->
+          <div class="base-row" style="display: inline-block">
+              <button class="slide-arrow" id="slide-arrow-prev" onclick="slideLeft()">‹</button>
+              <div class="base-row thumbnail-row" id="thumbnails-scroll">
+                  <div class="base-col thumbnail-col">
+                      <button class="thumbnail-btn active-btn" id="thumb-0" onclick="showIframe('drill_scene1')">
+                          <img src="path/to/thumbnail1.jpg" alt="Item 1" class="thumbnails">
+                          Drill 1
+                      </button>
+                  </div>
+                  <div class="base-col thumbnail-col">
+                      <button class="thumbnail-btn" id="thumb-1" onclick="showIframe('drill_scene1')">
+                          <img src="path/to/thumbnail2.jpg" alt="Item 2" class="thumbnails">
+                          Drill 2
+                      </button>
+                  </div>
+                  <div class="base-col thumbnail-col">
+                      <button class="thumbnail-btn" id="thumb-2" onclick="showIframe('drill_scene3')">
+                          <img src="path/to/thumbnail3.jpg" alt="Item 3" class="thumbnails">
+                          Drill 3
+                      </button>
+                  </div>
+                  <div class="base-col thumbnail-col">
+                      <button class="thumbnail-btn" id="thumb-3" onclick="showIframe('drill_scene4')">
+                          <img src="path/to/thumbnail4.jpg" alt="Item 4" class="thumbnails">
+                          Drill 4
+                      </button>
+                  </div>
+                  <!-- Add more thumbnails as needed -->
+              </div>
+              <button class="slide-arrow" id="slide-arrow-next" onclick="slideRight()">›</button>
+          </div>
+      
+          <script>
+              // Show specific iframe and update active thumbnail
+              function showIframe(iframeId) {
+                  // Hide all iframes
+                  document.querySelectorAll('.iframe').forEach(iframe => {
+                      iframe.classList.remove('show');
+                  });
+                  
+                  // Show the selected iframe
+                  const iframe = document.getElementById(iframeId);
+                  if (iframe) {
+                      iframe.classList.add('show');
+                  }
+                  
+                  // Update active thumbnail
+                  const thumbnails = document.querySelectorAll('.thumbnail-btn');
+                  thumbnails.forEach(thumb => {
+                      thumb.classList.remove('active-btn');
+                  });
+                  
+                  // Find the thumbnail button associated with this iframe
+                  for (let i = 0; i < thumbnails.length; i++) {
+                      if (thumbnails[i].onclick.toString().includes(iframeId)) {
+                          thumbnails[i].classList.add('active-btn');
+                          break;
+                      }
                   }
               }
-          }
-  
-          // Scroll thumbnails left
-          function slideLeft() {
-              document.getElementById('thumbnails-scroll').scrollBy({
-                  left: -300,
-                  behavior: 'smooth'
-              });
-          }
-  
-          // Scroll thumbnails right
-          function slideRight() {
-              document.getElementById('thumbnails-scroll').scrollBy({
-                  left: 300,
-                  behavior: 'smooth'
-              });
-          }
-  
-          // Fullscreen toggle
-          function toggleFullscreen() {
-              const container = document.getElementById('iframe-container');
-              if (document.fullscreenElement) {
-                  document.exitFullscreen();
-              } else {
-                  container.requestFullscreen().catch(err => {
-                      console.error(`Error attempting to enable fullscreen: ${err.message}`);
+      
+              // Scroll thumbnails left
+              function slideLeft() {
+                  document.getElementById('thumbnails-scroll').scrollBy({
+                      left: -300,
+                      behavior: 'smooth'
                   });
               }
-          }
-      </script>
-    
+      
+              // Scroll thumbnails right
+              function slideRight() {
+                  document.getElementById('thumbnails-scroll').scrollBy({
+                      left: 300,
+                      behavior: 'smooth'
+                  });
+              }
+      
+              // Fullscreen toggle
+              function toggleFullscreen() {
+                  const container = document.getElementById('iframe-container');
+                  if (document.fullscreenElement) {
+                      document.exitFullscreen();
+                  } else {
+                      container.requestFullscreen().catch(err => {
+                          console.error(`Error attempting to enable fullscreen: ${err.message}`);
+                      });
+                  }
+              }
+          </script>
+        </div>
       </div>
     </div>
     <!--/ Abstract. -->
