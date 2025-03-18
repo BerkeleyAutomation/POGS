@@ -411,7 +411,7 @@
         <div class="content-container">
           <!-- Heading -->
           <h3 class="results-text">
-              <b>Click the thumbnails below to navigate between different scenes</b>
+              <b>Click the thumbnails below to navigate between different interactive scenes from POGS state estimation results</b>
           </h3>
   
           <!-- Iframe Container - This will hold all your iframes -->
@@ -569,34 +569,123 @@
               </div>
               <button class="slide-arrow" id="slide-arrow-next" onclick="slideRight()">›</button>
           </div>
-      
-          <script>
-              // Show specific iframe and update active thumbnail
-              function showIframe(iframeId) {
-                  // Hide all iframes
-                  document.querySelectorAll('.iframe').forEach(iframe => {
-                      iframe.classList.remove('show');
-                  });
-                  
-                  // Show the selected iframe
-                  const iframe = document.getElementById(iframeId);
-                  if (iframe) {
-                      iframe.classList.add('show');
-                  }
-                  
-                  // Update active thumbnail
-                  const thumbnails = document.querySelectorAll('.thumbnail-btn');
-                  thumbnails.forEach(thumb => {
-                      thumb.classList.remove('active-btn');
-                  });
-                  
-                  // Find the thumbnail button associated with this iframe
-                  for (let i = 0; i < thumbnails.length; i++) {
-                      if (thumbnails[i].onclick.toString().includes(iframeId)) {
-                          thumbnails[i].classList.add('active-btn');
-                          break;
-                      }
-                  }
+          <style>
+            /* Thumbnail navigation with proper alignment */
+            .thumbnail-navigation {
+                width: 100%;
+                max-width: 960px;
+                margin: 15px auto;
+            }
+            
+            .thumbnail-row-container {
+                width: 100%;
+                position: relative;
+                padding-bottom: 10px; /* Space for scrollbar */
+            }
+            
+            .thumbnail-row {
+                display: flex;
+                overflow-x: auto;
+                scroll-behavior: smooth;
+                width: 100%;
+                padding-left: 0; /* Ensure no left padding */
+                margin-left: 0; /* Ensure no left margin */
+                
+                /* Custom scrollbar styling */
+                scrollbar-width: thin; /* Firefox */
+                scrollbar-color: #2196F3 #f1f1f1; /* Firefox */
+            }
+            
+            /* Custom scrollbar for Chrome, Safari, and Opera */
+            .thumbnail-row::-webkit-scrollbar {
+                height: 8px;
+            }
+            
+            .thumbnail-row::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 10px;
+            }
+            
+            .thumbnail-row::-webkit-scrollbar-thumb {
+                background: #2196F3;
+                border-radius: 10px;
+            }
+            
+            .thumbnail-row::-webkit-scrollbar-thumb:hover {
+                background: #0b7dda;
+            }
+            
+            .thumbnail-col {
+                flex: 0 0 auto;
+                margin: 0 5px;
+            }
+            
+            .thumbnail-col:first-child {
+                margin-left: 0; /* Remove left margin for first thumbnail */
+            }
+            
+            .thumbnail-btn {
+                background: none;
+                border: 1px solid #ccc;
+                padding: 5px;
+                cursor: pointer;
+                width: 120px;
+                text-align: center;
+                border-radius: 5px;
+            }
+            
+            .thumbnail-btn.active-btn {
+                border-color: #2196F3;
+                background-color: #e6f3ff;
+            }
+            
+            .thumbnails {
+                width: 100px;
+                height: 60px;
+                object-fit: cover;
+                margin-bottom: 5px;
+                border-radius: 3px;
+            }
+            </style>
+            
+            <script>
+            // Show specific iframe and update active thumbnail
+            function showIframe(iframeId) {
+                // Hide all iframes
+                document.querySelectorAll('.iframe').forEach(iframe => {
+                    iframe.classList.remove('show');
+                });
+                
+                // Show the selected iframe
+                const iframe = document.getElementById(iframeId);
+                if (iframe) {
+                    iframe.classList.add('show');
+                }
+                
+                // Update active thumbnail
+                const thumbnails = document.querySelectorAll('.thumbnail-btn');
+                thumbnails.forEach(thumb => {
+                    thumb.classList.remove('active-btn');
+                });
+                
+                // Find the thumbnail button associated with this iframe and scroll to it
+                for (let i = 0; i < thumbnails.length; i++) {
+                    if (thumbnails[i].onclick.toString().includes(iframeId)) {
+                        thumbnails[i].classList.add('active-btn');
+                        
+                        // Scroll the thumbnail into view (centered if possible)
+                        const thumbnailCol = thumbnails[i].closest('.thumbnail-col');
+                        if (thumbnailCol) {
+                            const container = document.getElementById('thumbnails-scroll');
+                            const scrollLeft = thumbnailCol.offsetLeft - (container.clientWidth / 2) + (thumbnailCol.clientWidth / 2);
+                            container.scrollTo({
+                                left: Math.max(0, scrollLeft),
+                                behavior: 'smooth'
+                            });
+                        }
+                        break;
+                    }
+                }
               }
       
               // Scroll thumbnails left
