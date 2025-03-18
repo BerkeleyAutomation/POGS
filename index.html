@@ -364,7 +364,15 @@
                   display: inline-block;
                   margin-top: 15px;
               }
-
+              .thumbnail-container {
+                  width: 100%;
+                  max-width: 960px;
+                  margin: 15px auto;
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+                  justify-content: center;
+              }
               .thumbnail-row {
                   display: flex;
                   overflow-x: auto;
@@ -450,115 +458,115 @@
           </div>
       
           <!-- Thumbnail Navigation -->
-          <div class="base-row" style="display: inline-block">
+          <div class="thumbnail-container" style="display: inline-block">
               <button class="slide-arrow" id="slide-arrow-prev" onclick="slideLeft()">‹</button>
-              <div class="base-row thumbnail-row" id="thumbnails-scroll">
-                  <div class="base-col thumbnail-col">
+              <div class="thumbnail-row" id="thumbnails-scroll">
+                  <div class="thumbnail-col">
                       <button class="thumbnail-btn active-btn" id="thumb-0" onclick="showIframe('drill_scene1')">
                           <img src="path/to/thumbnail1.jpg" alt="Item 1" class="thumbnails">
                           <br>
                           Drill 1
                       </button>
                   </div>
-                  <div class="base-col thumbnail-col">
+                  <div class="thumbnail-col">
                       <button class="thumbnail-btn" id="thumb-1" onclick="showIframe('drill_scene2')">
                           <img src="path/to/thumbnail2.jpg" alt="Item 2" class="thumbnails">
                           <br>
                           Drill 2
                       </button>
                   </div>
-                  <div class="base-col thumbnail-col">
+                  <div class="thumbnail-col">
                       <button class="thumbnail-btn" id="thumb-2" onclick="showIframe('drill_scene3')">
                           <img src="path/to/thumbnail3.jpg" alt="Item 3" class="thumbnails">
                           <br>
                           Drill 3
                       </button>
                   </div>
-                  <div class="base-col thumbnail-col">
+                  <div class="thumbnail-col">
                       <button class="thumbnail-btn" id="thumb-3" onclick="showIframe('drill_scene4')">
                           <img src="path/to/thumbnail4.jpg" alt="Item 4" class="thumbnails">
                           <br>
                           Drill 4
                       </button>
                   </div>
-                  <div class="base-col thumbnail-col">
+                  <div class="thumbnail-col">
                       <button class="thumbnail-btn" id="thumb-4" onclick="showIframe('iron_shelf_pick1')">
                           <img src="path/to/thumbnail5.jpg" alt="Item 5" class="thumbnails">
                           <br>
                           Iron Shelf Pick 1
                       </button>
                   </div>
-                  <div class="base-col thumbnail-col">
+                  <div class="thumbnail-col">
                       <button class="thumbnail-btn" id="thumb-5" onclick="showIframe('iron_shelf_place1')">
                           <img src="path/to/thumbnail6.jpg" alt="Item 6" class="thumbnails">
                           <br>
                           Iron Shelf Place 1
                       </button>
                   </div>
-                  <div class="base-col thumbnail-col">
+                  <div class="thumbnail-col">
                       <button class="thumbnail-btn" id="thumb-6" onclick="showIframe('iron_shelf_pick2')">
                           <img src="path/to/thumbnail7.jpg" alt="Item 7" class="thumbnails">
                           <br>
                           Iron Shelf Pick 2
                       </button>
                   </div>
-                  <div class="base-col thumbnail-col">
+                  <div class="thumbnail-col">
                       <button class="thumbnail-btn" id="thumb-7" onclick="showIframe('iron_shelf_place2')">
                           <img src="path/to/thumbnail8.jpg" alt="Item 8" class="thumbnails">
                           <br>
                           Iron Shelf Place 2
                       </button>
                   </div>
-                  <div class="base-col thumbnail-col">
+                  <div class="thumbnail-col">
                       <button class="thumbnail-btn" id="thumb-8" onclick="showIframe('shoe_shoebox_pick1')">
                           <img src="path/to/thumbnail9.jpg" alt="Item 9" class="thumbnails">
                           <br>
                           Shoe Shoebox Pick 1
                       </button>
                   </div>
-                  <div class="base-col thumbnail-col">
+                  <div class="thumbnail-col">
                       <button class="thumbnail-btn" id="thumb-9" onclick="showIframe('shoe_shoebox_place1')">
                           <img src="path/to/thumbnail10.jpg" alt="Item 10" class="thumbnails">
                           <br>
                           Shoe Shoebox Place 1
                       </button>
                   </div>
-                  <div class="base-col thumbnail-col">
+                  <div class="thumbnail-col">
                       <button class="thumbnail-btn" id="thumb-10" onclick="showIframe('shoe_shoebox_pick2')">
                           <img src="path/to/thumbnail11.jpg" alt="Item 11" class="thumbnails">
                           <br>
                           Shoe Shoebox Pick 2
                       </button>
                   </div>
-                  <div class="base-col thumbnail-col">
+                  <div class="thumbnail-col">
                       <button class="thumbnail-btn" id="thumb-11" onclick="showIframe('shoe_shoebox_place2')">
                           <img src="path/to/thumbnail12.jpg" alt="Item 12" class="thumbnails">
                           <br>
                           Shoe Shoebox Place 2
                       </button>
                   </div>
-                  <div class="base-col thumbnail-col">
+                  <div class="thumbnail-col">
                       <button class="thumbnail-btn" id="thumb-12" onclick="showIframe('jigsaw_shelf_pick1')">
                           <img src="path/to/thumbnail13.jpg" alt="Item 13" class="thumbnails">
                           <br>
                           Jigsaw Shelf Pick 1
                       </button>
                   </div>
-                  <div class="base-col thumbnail-col">
+                  <div class="thumbnail-col">
                       <button class="thumbnail-btn" id="thumb-13" onclick="showIframe('jigsaw_shelf_place1')">
                           <img src="path/to/thumbnail14.jpg" alt="Item 14" class="thumbnails">
                           <br>
                           Jigsaw Shelf Place 1
                       </button>
                   </div>
-                  <div class="base-col thumbnail-col">
+                  <div class="thumbnail-col">
                       <button class="thumbnail-btn" id="thumb-14" onclick="showIframe('jigsaw_shelf_pick2')">
                           <img src="path/to/thumbnail15.jpg" alt="Item 15" class="thumbnails">
                           <br>
                           Jigsaw Shelf Pick 2
                       </button>
                   </div>
-                  <div class="base-col thumbnail-col">
+                  <div class="thumbnail-col">
                       <button class="thumbnail-btn" id="thumb-15" onclick="showIframe('jigsaw_shelf_place2')">
                           <img src="path/to/thumbnail16.jpg" alt="Item 16" class="thumbnails">
                           <br>
